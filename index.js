@@ -35,6 +35,17 @@ async function run() {
       const result = await serviceCollection.insertOne(newTask);
       res.send(result);
     });
+
+    // user task
+    app.get("/task/:email", async (req, res) => {
+      const email = req.params.email;
+      console.log(email);
+      const query = { email: email };
+      const cursor = await serviceCollection.find(query);
+      const tasks = await cursor.toArray();
+      console.log(tasks);
+      res.send(tasks);
+    });
   } finally {
   }
 }
