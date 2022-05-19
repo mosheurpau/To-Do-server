@@ -48,23 +48,6 @@ async function run() {
     });
 
     // update task
-    app.put("/task/:id", async (req, res) => {
-      const id = req.params.id;
-      const updateDescription = req.body;
-      const filter = { _id: ObjectId(id) };
-      const options = { upsert: true };
-      const updatedDoc = {
-        $set: {
-          description: updateDescription.description,
-        },
-      };
-      const result = await serviceCollection.updateOne(
-        filter,
-        updatedDoc,
-        options
-      );
-      res.send(result);
-    });
 
     // DELETE
     app.delete("/task/:id", async (req, res) => {
