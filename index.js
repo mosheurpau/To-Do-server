@@ -48,7 +48,7 @@ async function run() {
     });
 
     // update task
-    app.put("/task/:email", async (req, res) => {
+    app.put("/task/:email/:id", async (req, res) => {
       const id = req.params.id;
       const updateDescription = req.body;
       const filter = { _id: ObjectId(id) };
